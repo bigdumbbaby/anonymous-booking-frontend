@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import DropDownPicker from 'react-native-dropdown-picker';
-//import { storage } from "../firebase/Firebase"
+import { storage } from "../firebase/Firebase"
 import * as ImagePicker from 'expo-image-picker';
 
 import {
@@ -28,43 +28,44 @@ export default function AddVenueForm({createVenue, user}) {
     createVenue(name, user.id, type, address, city, state, parseInt(zip))
   }
 
-  // useEffect(() => {
-  //   (async () => {
-  //     if (Platform.OS !== 'web') {
-  //       const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  //       if (status !== 'granted') {
-  //         alert('Sorry, we need camera roll permissions to make this work!');
-  //       }
-  //     }
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== 'web') {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== 'granted') {
+          alert('Sorry, we need camera roll permissions to make this work!');
+        }
+      }
+    })();
+  }, []);
 
   const pickImage = async () => {
-    // let result = await ImagePicker.launchImageLibraryAsync({
-    //   mediaTypes: ImagePicker.MediaTypeOptions.All,
-    //   allowsEditing: true,
-    //   aspect: [4, 3],
-    //   quality: 1,
-    // });
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
-    // const { uri } = result
-    // const filename = uri.substring(uri.lastIndexOf('/') + 1)
-    // const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
-    // const imageData = await fetch(uploadUri)
-    // const blob = await imageData.blob()
-    // const task = storage
-    //   .ref(`/images/${filename}`)
-    //   .put(blob)
-    //   .getDownloadURL()
-    // try {
-    //   await task
-    // } catch(e) {
-    //   console.error(e)
-    // }
-    // if (!result.cancelled) {
-    //   setImage(result.uri);
-    // }
-    // console.log(image)
+    const { uri } = result
+    const filename = uri.substring(uri.lastIndexOf('/') + 1)
+    const uploadUri = Platform.OS === 'ios' ? uri.replace('file://', '') : uri
+    const imageData = await fetch(uploadUri)
+    const blob = await imageData.blob()
+    const task = storage
+      .ref(`/images/${filename}`)
+      .put(blob)
+      // .getDownloadURL()
+      .then()
+    try {
+      await task
+    } catch(e) {
+      console.error(e)
+    }
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+    console.log(image)
   };
 
   return (
