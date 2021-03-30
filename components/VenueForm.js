@@ -12,7 +12,8 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
-  SafeAreaView
+  SafeAreaView,
+  ScrollView,
 } from "react-native";
 
 export default function AddVenueForm({createVenue, user}) {
@@ -25,7 +26,7 @@ export default function AddVenueForm({createVenue, user}) {
   const [image, setImage] = useState(null);
 
   const handleSubmit = () => {
-    createVenue(name, user.id, type, address, city, state, parseInt(zip))
+    createVenue(name, user.id, type, address, city, state, parseInt(zip), image)
   }
 
   useEffect(() => {
@@ -65,15 +66,19 @@ export default function AddVenueForm({createVenue, user}) {
     if (!result.cancelled) {
       setImage(result.uri);
     }
-    console.log(image)
   };
 
   return (
-    <View style={styles.container}>
-      <Image 
-      source={{uri: image}}
-      style={{width: 162, height: 240, flex: 1}}
-      />
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.formScroll}>
+      {image === ""
+        ? null
+        : <Image 
+        source={{uri: image}}
+        style={{width: 162, height: 200, flex: 1}}
+        />
+      }
+      
       <Button title="Choose Photo" onPress={pickImage}/>
       <View style={styles.inputView}>
         <TextInput
@@ -88,10 +93,10 @@ export default function AddVenueForm({createVenue, user}) {
       style={styles.dropDown}
       containerStyle={{height: 60, width: "70%"}}
       items={[
-        { label: 'Show Space', value: 'show_space' },
-        { label: 'Art Gallery', value: 'art_gallery' },
-        { label: 'Film Screening', value: 'film_gallery' },
-        { label: 'Misc.', value: 'misc' },
+        { label: 'Show Space', value: 'Show Space' },
+        { label: 'Art Gallery', value: 'Art Gallery' },
+        { label: 'Film Screening', value: 'Film Screening' },
+        { label: 'Misc.', value: 'Misc.' },
       ]}
       onChangeItem={item => setType(item.value)}
       />
@@ -103,6 +108,7 @@ export default function AddVenueForm({createVenue, user}) {
           onChangeText={(address) => setAddress(address)}
         />
       </View>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -116,57 +122,57 @@ export default function AddVenueForm({createVenue, user}) {
       containerStyle={{height: 60, width: "70%"}}
       style={styles.dropDown}
       items={[
-        { label: 'AL', value: 'al' },
-        { label: 'AK', value: 'ak' },
-        { label: 'AZ', value: 'az' },
-        { label: 'AR', value: 'ar' },
-        { label: 'CA', value: 'ca' },
-        { label: 'CO', value: 'co' },
-        { label: 'CT', value: 'ct' },
-        { label: 'DE', value: 'de' },
-        { label: 'FL', value: 'fl' },
-        { label: 'GA', value: 'ga' },
-        { label: 'HI', value: 'hi' },
-        { label: 'ID', value: 'id' },
-        { label: 'IL', value: 'il' },
-        { label: 'IN', value: 'in' },
-        { label: 'IA', value: 'ia' },
-        { label: 'KS', value: 'ks' },
-        { label: 'KY', value: 'ky' },
-        { label: 'LA', value: 'la' },
-        { label: 'ME', value: 'me' },
-        { label: 'MD', value: 'md' },
-        { label: 'MA', value: 'ma' },
-        { label: 'MI', value: 'mi' },
-        { label: 'MN', value: 'mn' },
-        { label: 'MS', value: 'ms' },
-        { label: 'MO', value: 'mo' },
-        { label: 'MT', value: 'mt' },
-        { label: 'NE', value: 'ne' },
-        { label: 'NV', value: 'nv' },
-        { label: 'NH', value: 'nh' },
-        { label: 'NJ', value: 'nj' },
-        { label: 'NM', value: 'nm' },
-        { label: 'NY', value: 'ny' },
-        { label: 'NC', value: 'nc' },
-        { label: 'ND', value: 'nd' },
-        { label: 'OH', value: 'oh' },
-        { label: 'OK', value: 'ok' },
-        { label: 'OR', value: 'or' },
-        { label: 'PA', value: 'pa' },
-        { label: 'RI', value: 'ri' },
-        { label: 'SC', value: 'sc' },
-        { label: 'SD', value: 'sd' },
-        { label: 'TN', value: 'tn' },
-        { label: 'TX', value: 'tx' },
-        { label: 'UT', value: 'ut' },
-        { label: 'VT', value: 'vt' },
-        { label: 'VA', value: 'va' },
-        { label: 'WA', value: 'wa' },
-        { label: 'WV', value: 'wv' },
-        { label: 'WI', value: 'wi' },
-        { label: 'WY', value: 'wy' },
-        { label: 'DC', value: 'dc' },
+        { label: 'AL', value: 'AL' },
+        { label: 'AK', value: 'AK' },
+        { label: 'AZ', value: 'AZ' },
+        { label: 'AR', value: 'AR' },
+        { label: 'CA', value: 'CA' },
+        { label: 'CO', value: 'CO' },
+        { label: 'CT', value: 'CT' },
+        { label: 'DE', value: 'DE' },
+        { label: 'FL', value: 'FL' },
+        { label: 'GA', value: 'GA' },
+        { label: 'HI', value: 'HI' },
+        { label: 'ID', value: 'ID' },
+        { label: 'IL', value: 'IL' },
+        { label: 'IN', value: 'IN' },
+        { label: 'IA', value: 'IA' },
+        { label: 'KS', value: 'KS' },
+        { label: 'KY', value: 'KY' },
+        { label: 'LA', value: 'LA' },
+        { label: 'ME', value: 'ME' },
+        { label: 'MD', value: 'MD' },
+        { label: 'MA', value: 'MA' },
+        { label: 'MI', value: 'MI' },
+        { label: 'MN', value: 'MN' },
+        { label: 'MS', value: 'MS' },
+        { label: 'MO', value: 'MO' },
+        { label: 'MT', value: 'MT' },
+        { label: 'NE', value: 'NE' },
+        { label: 'NV', value: 'NV' },
+        { label: 'NH', value: 'NH' },
+        { label: 'NJ', value: 'NJ' },
+        { label: 'NM', value: 'NM' },
+        { label: 'NY', value: 'NY' },
+        { label: 'NC', value: 'NC' },
+        { label: 'ND', value: 'ND' },
+        { label: 'OH', value: 'OH' },
+        { label: 'OK', value: 'OK' },
+        { label: 'OR', value: 'OR' },
+        { label: 'PA', value: 'PA' },
+        { label: 'RI', value: 'RI' },
+        { label: 'SC', value: 'SC' },
+        { label: 'SD', value: 'SD' },
+        { label: 'TN', value: 'TN' },
+        { label: 'TX', value: 'TX' },
+        { label: 'UT', value: 'UT' },
+        { label: 'VT', value: 'VT' },
+        { label: 'VA', value: 'VA' },
+        { label: 'WA', value: 'WA' },
+        { label: 'WV', value: 'WV' },
+        { label: 'WI', value: 'WI' },
+        { label: 'WY', value: 'WY' },
+        { label: 'DC', value: 'DC' },
       ]}
       onChangeItem={item => setState(item.value)}
       />
@@ -181,7 +187,8 @@ export default function AddVenueForm({createVenue, user}) {
       <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
         <Text style={styles.loginText}>SUBMIT</Text>
       </TouchableOpacity>
-    </View>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
@@ -191,22 +198,30 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    flexDirection: 'column'
+  },
+  formScroll: {
+    flex: 1,
+    backgroundColor: "#fff",
   },
   dropDown: {
     backgroundColor: "#add8e6",
-    // borderRadius: 30,
-    width: "70%",
+    width: 250,
     marginBottom: 20,
 
     alignItems: "center",
+  },
+  cityStateContainer: {
+    flex: 1,
+    flexDirection: 'row',
   },
   title: {
     paddingBottom: 30,
   },
   inputView: {
     backgroundColor: "#add8e6",
-    borderRadius: 30,
-    width: "70%",
+    borderRadius: 300,
+    width: 250,
     height: 45,
     marginBottom: 20,
 
@@ -227,12 +242,12 @@ const styles = StyleSheet.create({
   },
 
   loginBtn: {
-    width: 200,
+    width: 250,
     borderRadius: 25,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
+    marginTop: 10,
     backgroundColor: "#808080",
   },
 });

@@ -1,17 +1,32 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import VenueForm from '../components/VenueForm'
 import React, { useState, useEffect } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ConnectionContainer from './ConnectionContainer'
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
 
 export default function OwnerHome({user, setUser}) {
-  console.log(user.venue_id)
   const [venueData, setVenueData] = useState({})
+  const [connections, setConnections] = useState([])
   const [error, setError] = useState({})
 
-  console.log(user)
-  const createVenue = (name, owner_id, type, address, city, state, zip) => {
+  useEffect(() => {
+    fetch(`https://anonymous-booking-backend.herokuapp.com/connections/getMyConnections`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        my_id: user.id
+      })
+    })
+      .then(response => response.json())
+      .then(grabbedConnections => setConnections(grabbedConnections))
+  },[])
+
+  const createVenue = (name, owner_id, type, address, city, state, zip, image) => {
     const data = {
       venue: {
         name: name,
@@ -20,10 +35,10 @@ export default function OwnerHome({user, setUser}) {
         address: address,
         city: city,
         state: state,
-        zip: zip
+        zip: zip,
+        image_link: image
       }
     }
-    console.log(data)
     AsyncStorage.getItem('token')
       .then(token => {
         fetch(baseURL + 'venues', {
@@ -42,19 +57,16 @@ export default function OwnerHome({user, setUser}) {
             } else {
               setVenueData(results)
               setUser(results.owner)
-              console.log(user)
             }
-    
           })
       })
   }
   return (
     <View>
       {user.venue_id
-        ? <Text>signed in</Text>
+        ? <ConnectionContainer connections={connections} />
         : <VenueForm createVenue={createVenue} user={user}/>
       }
     </View>
   )
 }
-

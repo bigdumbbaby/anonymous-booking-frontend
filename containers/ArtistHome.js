@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native'
 import VenueCard from '../components/VenueCard'
 import VenueContainer from './VenueContainer'
 
-export default function ArtistHome() {
+export default function ArtistHome({user}) {
   const [venues, setVenues] = useState([])
   const [selectedVenue, setSelectedVenue] = useState({})
   const [isShowVenueContainer, setIsShowVenueContainer] = useState(false)
@@ -15,7 +15,7 @@ export default function ArtistHome() {
   const toggleVenueContainer = () => {
     setIsShowVenueContainer(!isShowVenueContainer)
   }
-  // console.log(selectedVenue)
+  
   return (
     <ScrollView>
       {isShowVenueContainer
@@ -23,6 +23,7 @@ export default function ArtistHome() {
           selectedVenue={selectedVenue} 
           setSelectedVenue={setSelectedVenue}
           toggleVenueContainer={toggleVenueContainer}
+          user={user}
           />
         : venues.map(venue => <VenueCard 
           venue={venue}

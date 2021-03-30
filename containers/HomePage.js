@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import OwnerHome from './OwnerHome';
 import ArtistHome from './ArtistHome'
@@ -10,20 +10,9 @@ export default function HomePage({ user, setUser, isOwner}) {
   const handleSubmit = () => {
     setUser({})
   }
-  const handleGet = () => {
-    AsyncStorage.getItem('token')
-      .then(token => {
-        fetch(baseURL + 'owners',{
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        }).then(response => response.json())
-        .then(users => console.log(users))
-      })
-  }
+  
   return (
     <View style={styles.container}>
-        <Text>Welcome {user.username}</Text>
         <TouchableOpacity style={styles.logoutBtn} onPress={handleSubmit}>
           <Text style={styles.loginText}>LOGOUT</Text>
         </TouchableOpacity>
@@ -32,7 +21,7 @@ export default function HomePage({ user, setUser, isOwner}) {
         </TouchableOpacity> */}
         {isOwner
           ? <OwnerHome user={user} setUser={setUser}/>
-          : <ArtistHome />
+          : <ArtistHome user={user}/>
         }
     </View>
 
@@ -56,12 +45,10 @@ const styles = StyleSheet.create({
   },
 
   logoutBtn: {
-    width: "80%",
-    borderRadius: 25,
+    width: "100%",
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 40,
     backgroundColor: "#808080",
   },
 });

@@ -23,24 +23,24 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
     toggleSignUp()
   }
 
-console.log(error)
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>SIGN UP</Text>
-      <ToggleSwitch
-        isOn={isOwner}
-        onColor="#add8e6"
-        offColor="#F5F5F5"
-        label="Venu Owner"
-        labelStyle={{ color: "black", fontWeight: "900" }}
-        size="large"
-        style={styles.toggle}
-        onToggle={handleToggle}
-      />
+      <View style={styles.toggleContainer}>
+        <ToggleSwitch
+          isOn={isOwner}
+          onColor="#add8e6"
+          offColor="#F5F5F5"
+          label="Venu Owner"
+          labelStyle={{ color: "black" }}
+          size="large"
+          style={styles.toggle}
+          onToggle={handleToggle}
+        />
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Username."
+          placeholder="Username"
           placeholderTextColor="#003f5c"
           onChangeText={(username) => setUsername(username)}
         />
@@ -49,7 +49,7 @@ console.log(error)
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email."
+          placeholder="Email"
           placeholderTextColor="#003f5c"
           onChangeText={(email) => setEmail(email)}
         />
@@ -58,7 +58,7 @@ console.log(error)
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
@@ -83,8 +83,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  toggleContainer: {
+    flex: 0.2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   toggle: {
-    padding: 25
+    padding: 25,
+    flex: 1,
+    flexDirection: 'row',
+    height: '10%'
   },
   loginLink : {
     paddingTop: 10,
@@ -95,10 +103,12 @@ const styles = StyleSheet.create({
   inputView: {
     backgroundColor: "#add8e6",
     borderRadius: 30,
-    width: "70%",
+    width: 300,
     height: 45,
     marginBottom: 20,
-
+    marginHorizontal: 10,
+    justifyContent: "center",
+    textAlign: "center",
     alignItems: "center",
   },
 
@@ -107,6 +117,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginLeft: 20,
+    width: 150
   },
 
   signUpButton: {
@@ -121,6 +132,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#808080",
+    backgroundColor: "#D3D3D3",
   },
 });

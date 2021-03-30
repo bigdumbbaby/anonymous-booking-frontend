@@ -72,7 +72,6 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
         }
       }
     }
-    console.log(baseURL + signUpLink)
     fetch(baseURL + signUpLink, {
       method: 'POST',
       headers: {
@@ -85,7 +84,6 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
     .then(result => {
       if(result.message){
         setError(result.message)
-        console.log(error)
       } else {
         if(result.owner){
           setUser(result.owner)
@@ -93,10 +91,8 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
           setUser(result.artist)
         }
         setError("")
-        console.log(results)
       }
     })
-    console.log(user)
   }
 
   const handleToggle = () => {
