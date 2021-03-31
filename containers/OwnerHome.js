@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import VenueForm from '../components/VenueForm'
 import React, { useState, useEffect } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ConnectionContainer from './ConnectionContainer'
+import OwnerVenueScreen from './OwnerVenueScreen'
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
 
@@ -60,18 +60,18 @@ export default function OwnerHome({user, setUser}) {
             if(results.error){
               setError(results.error)
             } else {
-              setVenueData(results)
               setUser(results.owner)
             }
           })
       })
   }
+  console.log(user.venue_id)
   return (
-    <View>
+    <>
       {user.venue_id
-        ? <ConnectionContainer connections={connections} toggleConnection={toggleConnection}/>
+        ? <OwnerVenueScreen user={user} connections={connections} toggleConnection={toggleConnection}/>
         : <VenueForm createVenue={createVenue} user={user}/>
       }
-    </View>
+    </>
   )
 }

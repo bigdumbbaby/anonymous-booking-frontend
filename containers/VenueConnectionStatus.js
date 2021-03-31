@@ -22,7 +22,7 @@ export default function VenueConnectionStatus({ selectedVenue, handlePress, hand
           <Text style={styles.venueText}>{type}</Text>
         </View>
         {connection.id
-          ? <IsArtistApproved />
+          ? <IsArtistApproved connection={connection} selectedVenue={selectedVenue}/>
           : <TouchableOpacity style={styles.addressBtn} onPress={handleSubmit}>
               <Text>CONNECT</Text>
             </TouchableOpacity>

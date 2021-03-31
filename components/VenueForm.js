@@ -69,7 +69,7 @@ export default function AddVenueForm({createVenue, user}) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View>
       <ScrollView style={styles.formScroll}>
       {image === ""
         ? null
@@ -188,7 +188,7 @@ export default function AddVenueForm({createVenue, user}) {
         <Text style={styles.loginText}>SUBMIT</Text>
       </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }
 

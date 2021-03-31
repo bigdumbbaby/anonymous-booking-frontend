@@ -151,13 +151,10 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   title: { 
-    fontFamily: 'CrimsonPro_900Black_Italic',
+    fontFamily: 'CrimsonPro_300Light_Italic',
     fontSize: 65,
-    color: "#add8e6",
+    color: "#C54350",
     textAlign: 'center',
-    textShadowColor: '#585858',
-    textShadowOffset:{width: 0.1, height: 0.1},
-    textShadowRadius:10,
     height: 100
   },
 })

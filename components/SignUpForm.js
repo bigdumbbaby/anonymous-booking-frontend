@@ -34,7 +34,7 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
         <Text style={styles.toggleTextInput}>VenueOwner</Text>
         <ToggleSwitch
           isOn={isOwner}
-          onColor="#add8e6"
+          onColor="#C54350"
           offColor="#F5F5F5"
           labelStyle={{ color: "black" }}
           size="large"
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   loginLink : {
     paddingTop: 10,
-    color: 'white',
+    color: 'black',
     fontFamily: 'CrimsonPro_400Regular',
     fontSize: 18,
   },
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     // backgroundColor: "#add8e6",
-    borderColor: "#add8e6",
+    borderColor: "#C54350",
     backgroundColor: 'white',
     borderWidth: 1,
     borderRadius: 5,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   toggleTextInput: {
-    color: 'white',
+    color: 'black',
     fontFamily: 'CrimsonPro_400Regular',
     fontSize: 18,
   },
@@ -152,6 +152,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#add8e6",
+    backgroundColor: "#C54350",
   },
 });

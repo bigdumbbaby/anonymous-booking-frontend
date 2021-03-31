@@ -2,11 +2,11 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import VenueAddressCard from '../components/VenueAddressCard'
 
-export default function IsArtistApproved({is_approved}) {
+export default function IsArtistApproved({connection, selectedVenue}) {
   return (
     <View>
-      {is_approved
-        ? <VenueAddressCard /> 
+      {connection.is_approved
+        ? <VenueAddressCard connection={connection} selectedVenue={selectedVenue}/> 
         : <Text>Waiting on a response from the venue owner.</Text>
       }
     </View>

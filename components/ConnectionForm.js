@@ -20,6 +20,7 @@ const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
 export default function ConnectionForm({user, selectedVenue, handleSubmit, toggleConnection, setConnection}) {
   const [message, setMessage] = useState("")
   const [link, setLink] = useState("")
+  const [secondTextInput, setSecondTextInput] = useState("")
 
   const handleConnectionSubmit = () => {
     const { owner_id } = selectedVenue.venue
@@ -54,16 +55,19 @@ export default function ConnectionForm({user, selectedVenue, handleSubmit, toggl
       <View style={styles.messageInputView}>
         <TextInput
           style={styles.messageTextInput}
-          placeholder="Message."
+          placeholder="Message"
           placeholderTextColor="#003f5c"
           multiline={true}
+          returnKeyType = {"next"}
           onChangeText={(message) => setMessage(message)}
+          onSubmitEditing={() => {secondTextInput.focus()}}
         />
       </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Link."
+          placeholder="Link"
+          ref={(input) => { setSecondTextInput(input) }}
           placeholderTextColor="#003f5c"
           onChangeText={(link) => setLink(link)}
         />

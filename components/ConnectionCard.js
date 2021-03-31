@@ -9,8 +9,9 @@ export default function ConnectionCard({connection, handlePress}) {
     <View style={styles.connectionCard}>
       <TouchableOpacity onPress={handleGetConnection}>
           <Text style={styles.connectionText}>
-            Message from: {connection.artist[0].username}
+            {connection.artist[0].username}:
           </Text>
+          <Text>{connection.message}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -27,15 +28,13 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   connectionText: {
-    flex: 1,
     justifyContent: 'center',
     fontSize: 25,
     height: 100,
     fontFamily: 'HelveticaNeue-Medium'
   },
   connectionTextContainer: {
-    flexDirection: 'column',
-    width: '50%',
+    flexDirection: 'row',
     height: 100,
     paddingLeft: 10
   }
