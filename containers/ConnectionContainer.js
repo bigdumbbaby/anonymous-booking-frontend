@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import ConnectionCard from '../components/ConnectionCard'
 import ConnectionInfo from '../components/ConnectionInfo'
 
-export default function ConnectionContainer({ connections }) {
+export default function ConnectionContainer({ connections, toggleConnection }) {
   const [isShowAllConnections, setIshShowAllConnections] = useState(true)
   const [selectedConnection, setSelectedConnection] = useState({})
 
@@ -25,6 +25,7 @@ export default function ConnectionContainer({ connections }) {
           handlePress={handlePress}
           selectedConnection={selectedConnection}
           setSelectedConnection={setSelectedConnection}
+          toggleConnection={toggleConnection}
         />
       }
     </ScrollView>

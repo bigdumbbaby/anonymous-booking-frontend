@@ -28,11 +28,11 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
   return (
     <View style={styles.container}>
       <View style={styles.toggleContainer}>
+        <Text>Venue Owner</Text>
         <ToggleSwitch
           isOn={isOwner}
           onColor="#add8e6"
           offColor="#F5F5F5"
-          label="Venu Owner"
           labelStyle={{ color: "black"}}
           size="large"
           style={styles.toggle}
@@ -42,7 +42,7 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Username."
+          placeholder="Username"
           placeholderTextColor="#003f5c"
           onChangeText={(username) => setUsername(username)}
         />
@@ -51,7 +51,7 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Password"
           placeholderTextColor="#003f5c"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
@@ -78,15 +78,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   toggleContainer: {
-    flex: 0.17,
-    alignItems: "flex-start",
-    justifyContent: "flex-start",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: '25%',
   },
   toggle: {
-    padding: 25,
-    flex: 1,
-    flexDirection: 'row',
-    height: '10%'
+    paddingBottom: 10
   },
   signUpLink : {
     paddingTop: 10,
@@ -95,13 +93,13 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   inputView: {
-    backgroundColor: "#add8e6",
-    borderRadius: 30,
+    // backgroundColor: "#add8e6",
+    borderColor: "#add8e6",
+    borderWidth: 1,
+    borderRadius: 5,
     width: 300,
     height: 45,
     marginBottom: 20,
-
-    alignItems: "center",
   },
 
   TextInput: {
@@ -124,6 +122,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#D3D3D3",
+    backgroundColor: "#add8e6",
   },
 });

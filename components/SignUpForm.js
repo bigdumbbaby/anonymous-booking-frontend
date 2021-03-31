@@ -8,14 +8,19 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = () => {
-    const user = {
-      username: username,
-      email: email,
-      password: password
+    if(password === confirmPassword){
+      const user = {
+        username: username,
+        email: email,
+        password: password
+      }
+      signUp(user)
+    } else {
+      setError("Password must match.")
     }
-    signUp(user)
   }
 
   const handleLink = () => {
@@ -26,11 +31,11 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
   return (
     <View style={styles.container}>
       <View style={styles.toggleContainer}>
+        <Text>VenueOwner</Text>
         <ToggleSwitch
           isOn={isOwner}
           onColor="#add8e6"
           offColor="#F5F5F5"
-          label="Venu Owner"
           labelStyle={{ color: "black" }}
           size="large"
           style={styles.toggle}
@@ -64,9 +69,19 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
           onChangeText={(password) => setPassword(password)}
         />
       </View>
+
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Confirm Password"
+          placeholderTextColor="#003f5c"
+          secureTextEntry={true}
+          onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
+        />
+      </View>
       {error === ""
         ? null 
-        : <View style={styles.errorTextContainer}><Text>{error}</Text></View>
+        : <View><Text style={{color: 'red'}}>{error}</Text></View>
       }
 
       <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
@@ -84,15 +99,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   toggleContainer: {
-    flex: 0.2,
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    width: '25%',
   },
   toggle: {
-    padding: 25,
-    flex: 1,
-    flexDirection: 'row',
-    height: '10%'
+    paddingBottom: 10,
   },
   loginLink : {
     paddingTop: 10,
@@ -101,15 +114,13 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   inputView: {
-    backgroundColor: "#add8e6",
-    borderRadius: 30,
+    // backgroundColor: "#add8e6",
+    borderColor: "#add8e6",
+    borderWidth: 1,
+    borderRadius: 5,
     width: 300,
     height: 45,
     marginBottom: 20,
-    marginHorizontal: 10,
-    justifyContent: "center",
-    textAlign: "center",
-    alignItems: "center",
   },
 
   TextInput: {
@@ -132,6 +143,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#D3D3D3",
+    backgroundColor: "#add8e6",
   },
 });

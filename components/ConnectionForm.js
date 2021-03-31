@@ -17,7 +17,7 @@ import {
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
 
-export default function ConnectionForm({user, selectedVenue, handleSubmit}) {
+export default function ConnectionForm({user, selectedVenue, handleSubmit, toggleConnection}) {
   const [message, setMessage] = useState("")
   const [link, setLink] = useState("")
 
@@ -46,6 +46,7 @@ export default function ConnectionForm({user, selectedVenue, handleSubmit}) {
         .then(users => console.log(users))
       })
     handleSubmit()
+    toggleConnection()
   }
 
   return (

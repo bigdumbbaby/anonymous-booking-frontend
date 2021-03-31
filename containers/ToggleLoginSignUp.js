@@ -11,7 +11,6 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
   const [isShowSignUp, setIsShowSignUp] = useState(false)
   const [error, setError] = useState("");
 
-
   const toggleSignUp = () => {
     setIsShowSignUp(!isShowSignUp)
   }
@@ -98,9 +97,13 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
   const handleToggle = () => {
     setIsOwner(!isOwner)
   }
-
+  
   return (
     <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Anonymous</Text>
+        <Text style={styles.title}>Booking</Text>
+      </View>
       {isShowSignUp
         ? <SignUpForm 
           error={error}
@@ -121,6 +124,7 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
       } 
     </View>
   )
+
 }
 
 const styles = StyleSheet.create({
@@ -128,13 +132,19 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  loginBtn: {
-    width: "80%",
-    borderRadius: 25,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 40,
-    backgroundColor: "#808080",
+  titleContainer: {
+    justifyContent: 'center',
+    alignContent: "center",
+    textAlign: 'center'
+  },
+  title: { 
+    fontFamily: 'CrimsonPro_900Black_Italic',
+    fontSize: 65,
+    color: "#add8e6",
+    textAlign: 'center',
+    textShadowColor: '#585858',
+    textShadowOffset:{width: 0.1, height: 0.1},
+    textShadowRadius:10,
+    height: 100
   },
 })

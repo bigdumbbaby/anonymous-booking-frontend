@@ -7,11 +7,15 @@ export default function ArtistHome({user}) {
   const [venues, setVenues] = useState([])
   const [selectedVenue, setSelectedVenue] = useState({})
   const [isShowVenueContainer, setIsShowVenueContainer] = useState(false)
+
+
   useEffect(() => {
     fetch(`https://anonymous-booking-backend.herokuapp.com/venues`)
       .then(response => response.json())
       .then(grabbedVenues => setVenues(grabbedVenues))
   },[])
+
+
   const toggleVenueContainer = () => {
     setIsShowVenueContainer(!isShowVenueContainer)
   }

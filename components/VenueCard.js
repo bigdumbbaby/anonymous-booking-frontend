@@ -12,7 +12,7 @@ export default function VenuCards({venue, setSelectedVenue, toggleVenueContainer
       <TouchableOpacity style={styles.imageTouchable} onPress={handlePress}>
         <Image 
           source={{uri: venue.image_link}}
-          style={{width: 180, height: 180, flex: 1}}
+          style={{width: 180, height: 180, flex: 1, borderRadius: 5}}
         />
       </TouchableOpacity>
       <View style={styles.venueTextContainer}>
@@ -34,22 +34,18 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   venueText: {
-    flex: 1,
     justifyContent: 'center',
-    height: '5%',
     fontSize: 25,
-    fontFamily: 'HelveticaNeue-Medium'
+    fontFamily: 'CrimsonPro_900Black'
   },
   cityVenueText: {
-    flex: 1,
     justifyContent: 'center',
     fontSize: 18,
-    fontFamily: 'HelveticaNeue-Medium'
+    color: '#7f7f7f',
+    fontFamily: 'CrimsonPro_300Light'
   },
   venueTextContainer: {
-    flexDirection: 'column',
     width: '50%',
-    height: 200,
     paddingLeft: 10
   },
   imageTouchable: {

@@ -5,7 +5,7 @@ import VenueConnectionStatus from './VenueConnectionStatus'
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
 
-export default function VenueContainer({setSelectedVenue, selectedVenue, toggleVenueContainer, user }) {
+export default function VenueContainer({setSelectedVenue, selectedVenue, toggleVenueContainer, user}) {
   
   const {owner_id} = selectedVenue.venue
 
@@ -17,7 +17,12 @@ export default function VenueContainer({setSelectedVenue, selectedVenue, toggleV
   // const [isConnected, setIsConnected] = useState(false)
   const [connection, setConnection] = useState({})
   const [isShowForm, setIsShowForm] = useState(false)
+  const [toggleConnectionSent, setToggleConnectionSent] = useState(false)
   
+
+  const toggleConnection = () => {
+    setToggleConnectionSent(!toggleConnectionSent)
+  }
 
   const handleSubmit = () => {
     setIsShowForm(!isShowForm)
@@ -43,13 +48,25 @@ export default function VenueContainer({setSelectedVenue, selectedVenue, toggleV
           setConnection({})
         }
       })
-  },[])
+  },[toggleConnectionSent])
 
   return (
     <>
       {isShowForm
-      ? <ConnectionForm selectedVenue={selectedVenue} user={user} handleSubmit={handleSubmit}/>
-      : <VenueConnectionStatus connection={connection} user={user} handlePress={handlePress} selectedVenue={selectedVenue} handleSubmit={handleSubmit} isShowForm={isShowForm}/>
+      ? <ConnectionForm 
+        selectedVenue={selectedVenue} 
+        user={user} 
+        handleSubmit={handleSubmit} 
+        toggleConnection={toggleConnection}
+      />
+      : <VenueConnectionStatus 
+        connection={connection} 
+        user={user} 
+        handlePress={handlePress} 
+        selectedVenue={selectedVenue} 
+        handleSubmit={handleSubmit} 
+        isShowForm={isShowForm} 
+      />
       }
     </>
   )

@@ -7,9 +7,9 @@ import ConnectionContainer from './ConnectionContainer'
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
 
 export default function OwnerHome({user, setUser}) {
-  const [venueData, setVenueData] = useState({})
   const [connections, setConnections] = useState([])
   const [error, setError] = useState({})
+  const [isToggleConnection, setIsToggleConnection] = useState(false)
 
   useEffect(() => {
     fetch(`https://anonymous-booking-backend.herokuapp.com/connections/getMyConnections`, {
@@ -24,7 +24,12 @@ export default function OwnerHome({user, setUser}) {
     })
       .then(response => response.json())
       .then(grabbedConnections => setConnections(grabbedConnections))
-  },[])
+  },[isToggleConnection])
+
+
+  const toggleConnection = () => {
+    setIsToggleConnection(!isToggleConnection)
+  }
 
   const createVenue = (name, owner_id, type, address, city, state, zip, image) => {
     const data = {
@@ -64,7 +69,7 @@ export default function OwnerHome({user, setUser}) {
   return (
     <View>
       {user.venue_id
-        ? <ConnectionContainer connections={connections} />
+        ? <ConnectionContainer connections={connections} toggleConnection={toggleConnection}/>
         : <VenueForm createVenue={createVenue} user={user}/>
       }
     </View>

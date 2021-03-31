@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
-export default function ConnectionInfo({selectedConnection , handlePress, setSelectedConnection}) {
+export default function ConnectionInfo({selectedConnection, 
+  handlePress, 
+  setSelectedConnection,  
+  toggleConnection}) {
+
   const handleBack = () => {
     handlePress({})
   }
+  const artist= selectedConnection.artist[0]
+
   const acceptConnection = () => {
-    console.log(selectedConnection.is_approved)
-    fetch(baseURL + `/connections/${selectedConnection.id}`, {
+    fetch(baseURL + `connections/${selectedConnection.id}`, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -17,13 +22,13 @@ export default function ConnectionInfo({selectedConnection , handlePress, setSel
     }).then(response => response.json())
     .then(connection => {
       setSelectedConnection(connection)
-      console.log(selectedConnection.is_approved)
+      toggleConnection()
     })
   }
   return (
     <View>
       <TouchableOpacity onPress={handleBack}>
-        <Text> Message from: {selectedConnection.artist[0].username}</Text>
+        <Text> Message from: {artist.username}</Text>
         <Text>{selectedConnection.message}</Text>
         <Text>{selectedConnection.link}</Text>
       </TouchableOpacity>
