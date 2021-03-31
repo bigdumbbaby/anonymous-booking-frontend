@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native'
 import LoginForm from '../components/LoginForm'
 import SignUpForm from '../components/SignUpForm'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import venue from '../assets/venue.jpg'
+import americanGrandma from '../assets/americanGrandma.jpg'
 
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
@@ -100,29 +102,32 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
   
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Anonymous</Text>
-        <Text style={styles.title}>Booking</Text>
-      </View>
-      {isShowSignUp
-        ? <SignUpForm 
-          error={error}
-          setError={setError} 
-          signUp={signUp} 
-          toggleSignUp={toggleSignUp}
-          isOwner={isOwner}
-          handleToggle={handleToggle}
-        />
-        : <LoginForm 
-          error={error} 
-          setError={setError} 
-          login={login} 
-          toggleSignUp={toggleSignUp}
-          isOwner={isOwner}
-          handleToggle={handleToggle}
-        />
-      } 
+      <ImageBackground source={americanGrandma} style={styles.image}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Anonymous</Text>
+          <Text style={styles.title}>Booking</Text>
+        </View>
+        {isShowSignUp
+          ? <SignUpForm 
+            error={error}
+            setError={setError} 
+            signUp={signUp} 
+            toggleSignUp={toggleSignUp}
+            isOwner={isOwner}
+            handleToggle={handleToggle}
+          />
+          : <LoginForm 
+            error={error} 
+            setError={setError} 
+            login={login} 
+            toggleSignUp={toggleSignUp}
+            isOwner={isOwner}
+            handleToggle={handleToggle}
+          />
+        } 
+      </ImageBackground>
     </View>
+
   )
 
 }
@@ -131,6 +136,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  image: {
+    flex: 1,
+    // resizeMode: "cover",
+    justifyContent: "center",
+    // borderRadius: ,
+    height: 800,
+    opacity: 1
   },
   titleContainer: {
     justifyContent: 'center',

@@ -18,6 +18,7 @@ export default function VenueContainer({setSelectedVenue, selectedVenue, toggleV
   const [connection, setConnection] = useState({})
   const [isShowForm, setIsShowForm] = useState(false)
   const [toggleConnectionSent, setToggleConnectionSent] = useState(false)
+  const [isShowConnectButton, setIsShowConnectButton] = useState(true)
   
 
   const toggleConnection = () => {
@@ -48,7 +49,9 @@ export default function VenueContainer({setSelectedVenue, selectedVenue, toggleV
           setConnection({})
         }
       })
-  },[toggleConnectionSent])
+  },[])
+
+  console.log("venueContainer conection", connection)
 
   return (
     <>
@@ -58,6 +61,7 @@ export default function VenueContainer({setSelectedVenue, selectedVenue, toggleV
         user={user} 
         handleSubmit={handleSubmit} 
         toggleConnection={toggleConnection}
+        setConnection={setConnection}
       />
       : <VenueConnectionStatus 
         connection={connection} 

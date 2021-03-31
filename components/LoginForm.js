@@ -28,7 +28,7 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
   return (
     <View style={styles.container}>
       <View style={styles.toggleContainer}>
-        <Text>Venue Owner</Text>
+        <Text style={styles.toggleTextInput}>Venue Owner</Text>
         <ToggleSwitch
           isOn={isOwner}
           onColor="#add8e6"
@@ -73,7 +73,7 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: 'transparent',
     alignItems: "center",
     justifyContent: "center",
   },
@@ -81,13 +81,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    width: '25%',
+    width: 200,
   },
   toggle: {
     paddingBottom: 10
   },
   signUpLink : {
     paddingTop: 10,
+    color: 'white',
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 18,
   },
   title: {
     paddingBottom: 30,
@@ -100,14 +103,21 @@ const styles = StyleSheet.create({
     width: 300,
     height: 45,
     marginBottom: 20,
+    backgroundColor: 'white'
   },
 
   TextInput: {
-    height: 50,
     flex: 1,
-    padding: 10,
     marginLeft: 20,
-    width: 150
+    width: 150,
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 18,
+  },
+
+  toggleTextInput: {
+    color: 'white',
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 18,
   },
 
   signUpButton: {

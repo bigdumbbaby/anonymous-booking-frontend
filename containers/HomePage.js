@@ -14,7 +14,7 @@ export default function HomePage({ user, setUser, isOwner}) {
   return (
     <View style={styles.container}>
         <TouchableOpacity style={styles.logoutBtn} onPress={handleSubmit}>
-          <Text style={styles.loginText}>LOGOUT</Text>
+          <Text style={styles.logoutText}>LOGOUT</Text>
         </TouchableOpacity>
         {/* <TouchableOpacity style={styles.logoutBtn} onPress={handleGet}>
           <Text style={styles.loginText}>Get Users</Text>
@@ -50,5 +50,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#D3D3D3",
+    fontFamily: 'CrimsonPro_300Light'
+  },
+  logoutText: {
+    fontFamily: 'CrimsonPro_300Light',
+    fontSize: 20
   },
 });
