@@ -136,4 +136,9 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#add8e6",
   },
+  loginText: {
+    color: 'black',
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 18,
+  }
 });

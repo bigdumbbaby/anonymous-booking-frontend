@@ -21,7 +21,7 @@ export default function ArtistHome({user}) {
   }
   
   return (
-    <ScrollView>
+    <ScrollView style={{height: 625}}>
       {isShowVenueContainer
         ? <VenueContainer 
           selectedVenue={selectedVenue} 

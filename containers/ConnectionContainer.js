@@ -41,6 +41,7 @@ export default function ConnectionContainer({ connections, toggleConnection, tog
 const styles = StyleSheet.create({
   connectionScrollView: {
     width: '100%',
+    height: 600
   },
   container: {
     alignItems: 'center',
