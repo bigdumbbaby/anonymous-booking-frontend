@@ -65,7 +65,6 @@ export default function OwnerHome({user, setUser}) {
           })
       })
   }
-  console.log(user.venue_id)
   return (
     <>
       {user.venue_id

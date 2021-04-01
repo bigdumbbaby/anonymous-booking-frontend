@@ -26,23 +26,63 @@ export default function ConnectionInfo({selectedConnection,
     })
   }
   return (
-    <View>
+    <View style={styles.connectionTextContainer}>
+      <Text style={styles.artistText}>Message from: {artist.username}</Text>
       <TouchableOpacity onPress={handleBack}>
-        <Text> Message from: {artist.username}</Text>
-        <Text>{selectedConnection.message}</Text>
-        <Text>{selectedConnection.link}</Text>
+        <View style={styles.connectionMessageContainer}>
+          <Text style={styles.messageText}>{selectedConnection.message}</Text>
+        </View>
       </TouchableOpacity>
+      <Text style={styles.artLinkTitleText}>Link to Art:</Text>
+      <Text style={styles.artLinkText}>{selectedConnection.link}</Text>
       {selectedConnection.is_approved
-        ? <Text>Connected!</Text>
+        ? <Text style={styles.connectionText}> Status: Connected!</Text>
         : <TouchableOpacity style={styles.submitBtn} onPress={acceptConnection}>
-            <Text style={styles.loginText}>ACCEPT CONNECTION</Text>
+            <Text style={styles.acceptText}>ACCEPT CONNECTION</Text>
           </TouchableOpacity>
-      }
+    }
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  artistText: {
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 28,
+  },
+  connectionTextContainer: {
+    flexDirection: 'column',
+    paddingTop: 5,
+    paddingBottom: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  connectionMessageContainer: {
+    paddingLeft: 10,
+    backgroundColor: '#add8e6',
+    margin: 10,
+    borderRadius: 20,
+    width: 350,
+    marginBottom: 25
+  },
+  messageText: {
+    fontFamily: 'CrimsonPro_400Regular',
+    padding: 15,
+    fontSize: 30,
+  },
+
+  artLinkTitleText: {
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 25,
+  },
+  artLinkText: {
+    fontFamily: 'CrimsonPro_400Regular',
+    color: '#7f7f7f',
+    fontSize: 25,
+    paddingBottom: 25,
+  },
+  
+
   submitBtn: {
     width: 300,
     borderRadius: 25,
@@ -52,4 +92,13 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#D3D3D3",
   },
+  acceptText: {
+    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 20,
+  },
+  connectionText: {
+    fontFamily: 'CrimsonPro_400Regular',
+    color: 'green',
+    fontSize: 25,
+  }
 });

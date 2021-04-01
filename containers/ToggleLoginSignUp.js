@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image} from 'react-native'
 import LoginForm from '../components/LoginForm'
 import SignUpForm from '../components/SignUpForm'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import venue from '../assets/venue.jpg'
 import americanGrandma from '../assets/americanGrandma.jpg'
+import logo from '../assets/logo.png'
 
 
 const baseURL = 'https://anonymous-booking-backend.herokuapp.com/'
@@ -103,10 +104,6 @@ export default function ToggleLoginSignUp({ setUser, user, isOwner, setIsOwner})
   return (
     <View style={styles.container}>
       <ImageBackground source={americanGrandma} style={styles.image}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Anonymous</Text>
-          <Text style={styles.title}>Booking</Text>
-        </View>
         {isShowSignUp
           ? <SignUpForm 
             error={error}
@@ -136,24 +133,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    alignContent: 'center',
+    justifyContent: 'center',
   },
+  // logoContainer: {
+  //   alignContent: 'center',
+  //   justifyContent: 'center',
+  //   width: 500
+  // },
   image: {
     flex: 1,
     // resizeMode: "cover",
-    justifyContent: "center",
     // borderRadius: ,
     height: 800,
-    opacity: 1
+    opacity: 1,
+    textAlign: 'center',
   },
   titleContainer: {
     justifyContent: 'center',
     alignContent: "center",
     textAlign: 'center'
   },
+  logoContainer: {
+    justifyContent: 'center',
+    alignContent: "center",
+    textAlign: 'center',
+    width: 50,
+  },
   title: { 
     fontFamily: 'CrimsonPro_300Light_Italic',
     fontSize: 65,
-    color: "#C54350",
+    color: "#30819c",
     textAlign: 'center',
     height: 100
   },

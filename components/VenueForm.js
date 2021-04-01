@@ -69,15 +69,16 @@ export default function AddVenueForm({createVenue, user}) {
   };
 
   return (
-    <View>
-      <ScrollView style={styles.formScroll}>
-      {image === ""
-        ? null
-        : <Image 
-        source={{uri: image}}
-        style={{width: 162, height: 200, flex: 1}}
-        />
-      }
+    <ScrollView style={styles.formScroll} contentContainerStyle={{ flexGrow: 1 }}>
+      <View>
+        {image === ""
+          ? null
+          : <Image 
+          source={{uri: image}}
+          style={{width: 162, height: 200, flex: 1}}
+          />
+        }
+      </View>
       
       <Button title="Choose Photo" onPress={pickImage}/>
       <View style={styles.inputView}>
@@ -88,6 +89,7 @@ export default function AddVenueForm({createVenue, user}) {
           onChangeText={(name) => setName(name)}
         />
       </View>
+      <View>
       <Text>Venue Type:</Text>
       <DropDownPicker 
       style={styles.dropDown}
@@ -100,6 +102,8 @@ export default function AddVenueForm({createVenue, user}) {
       ]}
       onChangeItem={item => setType(item.value)}
       />
+
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -117,6 +121,7 @@ export default function AddVenueForm({createVenue, user}) {
           onChangeText={(city) => setCity(city)}
         />
       </View>
+      <View>
       <Text>State:</Text>
       <DropDownPicker 
       containerStyle={{height: 60, width: "70%"}}
@@ -176,6 +181,8 @@ export default function AddVenueForm({createVenue, user}) {
       ]}
       onChangeItem={item => setState(item.value)}
       />
+
+      </View>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -184,24 +191,24 @@ export default function AddVenueForm({createVenue, user}) {
           onChangeText={(zip) => setZip(zip)}
         />
       </View>
+      <View>
       <TouchableOpacity style={styles.loginBtn} onPress={handleSubmit}>
         <Text style={styles.loginText}>SUBMIT</Text>
       </TouchableOpacity>
-      </ScrollView>
-    </View>
+
+      </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: 'column'
   },
   formScroll: {
-    flex: 1,
     backgroundColor: "#fff",
   },
   dropDown: {

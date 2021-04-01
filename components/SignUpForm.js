@@ -1,6 +1,8 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { useState, useEffect } from "react";
 import ToggleSwitch from 'toggle-switch-react-native'
+import logo from '../assets/logo.png'
+
 
 
 
@@ -30,11 +32,12 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
 
   return (
     <View style={styles.container}>
+      <Image source={logo} style={styles.imageLogo}/>
       <View style={styles.toggleContainer}>
         <Text style={styles.toggleTextInput}>VenueOwner</Text>
         <ToggleSwitch
           isOn={isOwner}
-          onColor="#C54350"
+          onColor="#add8e6"
           offColor="#F5F5F5"
           labelStyle={{ color: "black" }}
           size="large"
@@ -46,7 +49,7 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
         <TextInput
           style={styles.TextInput}
           placeholder="Username"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#246175"
           onChangeText={(username) => setUsername(username)}
         />
       </View>
@@ -55,7 +58,7 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
         <TextInput
           style={styles.TextInput}
           placeholder="Email"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#246175"
           onChangeText={(email) => setEmail(email)}
         />
       </View>
@@ -64,7 +67,7 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
         <TextInput
           style={styles.TextInput}
           placeholder="Password"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#246175"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
@@ -74,7 +77,7 @@ export default function SignUpForm({ signUp, error, setError, toggleSignUp, isOw
         <TextInput
           style={styles.TextInput}
           placeholder="Confirm Password"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#246175"
           secureTextEntry={true}
           onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
         />
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     // backgroundColor: "#add8e6",
-    borderColor: "#C54350",
+    borderColor: "#add8e6",
     backgroundColor: 'white',
     borderWidth: 1,
     borderRadius: 5,
@@ -152,6 +155,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#C54350",
+    backgroundColor: "#add8e6",
   },
 });

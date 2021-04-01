@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import ToggleSwitch from 'toggle-switch-react-native'
+import logo from '../assets/logo.png'
 import {
   StyleSheet,
   Text,
@@ -27,11 +28,12 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
 
   return (
     <View style={styles.container}>
+      <Image source={logo} style={styles.imageLogo}/>
       <View style={styles.toggleContainer}>
         <Text style={styles.toggleTextInput}>Venue Owner</Text>
         <ToggleSwitch
           isOn={isOwner}
-          onColor="#C54350"
+          onColor="#add8e6"
           offColor="#F5F5F5"
           labelStyle={{ color: "black"}}
           size="large"
@@ -43,7 +45,7 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
         <TextInput
           style={styles.TextInput}
           placeholder="Username"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#246175"
           onChangeText={(username) => setUsername(username)}
         />
       </View>
@@ -52,7 +54,7 @@ export default function LoginForm({error, setError, toggleSignUp, login, isOwner
         <TextInput
           style={styles.TextInput}
           placeholder="Password"
-          placeholderTextColor="#003f5c"
+          placeholderTextColor="#246175"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   },
   inputView: {
     // backgroundColor: "#add8e6",
-    borderColor: "#C54350",
+    borderColor: "#add8e6",
     borderWidth: 1,
     borderRadius: 5,
     width: 300,
@@ -132,6 +134,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#C54350",
+    backgroundColor: "#add8e6",
   },
 });

@@ -14,7 +14,7 @@ export default function VenueConnectionStatus({ selectedVenue, handlePress, hand
         <TouchableOpacity onPress={handlePress}>
           <Image 
             source={{uri: image_link}}
-            style={{width:300, height: 200, flex: 1}}
+            style={{width:300, height: 200, marginTop: 10}}
           />
         </TouchableOpacity>
         <View style={styles.venueTextContainer}>
@@ -24,7 +24,7 @@ export default function VenueConnectionStatus({ selectedVenue, handlePress, hand
         {connection.id
           ? <IsArtistApproved connection={connection} selectedVenue={selectedVenue}/>
           : <TouchableOpacity style={styles.addressBtn} onPress={handleSubmit}>
-              <Text>CONNECT</Text>
+              <Text style={{fontFamily: 'CrimsonPro_400Regular', fontSize: 20}}>CONNECT</Text>
             </TouchableOpacity>
         }
       </View>
@@ -32,9 +32,8 @@ export default function VenueConnectionStatus({ selectedVenue, handlePress, hand
 }
 
 const styles = StyleSheet.create({
-  venueCard: {
-    flex: 1,
-    flexDirection: 'row',
+  venueContainer: {
+    flexDirection: 'column',
     paddingTop: 10,
     paddingLeft: 10,
     justifyContent: 'flex-start',
@@ -43,22 +42,16 @@ const styles = StyleSheet.create({
   venueText: {
     justifyContent: 'center',
     fontSize: 25,
-    fontFamily: 'CrimsonPro_900Black'
-  },
-  cityVenueText: {
-    justifyContent: 'center',
-    fontSize: 18,
     color: '#7f7f7f',
-    fontFamily: 'CrimsonPro_300Light'
+    fontFamily: 'CrimsonPro_400Regular',
   },
   venueTextContainer: {
     width: 300,
     paddingLeft: 10
   },
   venueTitleText: {
-    fontSize: 55,
-    paddingBottom: 10,
-    fontFamily: 'CrimsonPro_400Regular',
+    fontSize: 50,
+    fontFamily: 'CrimsonPro_900Black'
   },
   addressBtn: {
     width: 300,
@@ -67,6 +60,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
-    backgroundColor: "#808080",
+    backgroundColor: "#D3D3D3",
+    fontFamily: 'CrimsonPro_400Regular'
   },
 })
